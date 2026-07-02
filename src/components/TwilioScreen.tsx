@@ -356,63 +356,6 @@ export default function TwilioScreen() {
               )}
             </button>
           </div>
-
-          {/* Test Section Card */}
-          <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm space-y-4">
-            <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2">
-              <Send className="w-4 h-4 text-slate-500" />
-              Testar SMS e Ligação Automática
-            </h3>
-
-            <div className="space-y-3">
-              <div className="space-y-1.5">
-                <label className="text-[11px] font-bold text-slate-500 block">TELEFONE DO DESTINATÁRIO (E.164)</label>
-                <input
-                  type="text"
-                  placeholder="Ex: +5511999991111"
-                  value={testNumber}
-                  onChange={(e) => setTestNumber(e.target.value)}
-                  className="w-full text-xs font-mono py-3 px-4 bg-slate-50 border border-slate-150 rounded-xl focus:bg-white focus:outline-none focus:border-blue-500 transition-colors"
-                />
-                <span className="text-[9px] text-slate-400 block">
-                  Telefone ativo incluindo +55 e o DDD para testar a entrega de mensagens e chamada de voz.
-                </span>
-              </div>
-
-              <button
-                onClick={handleTestTwilio}
-                disabled={isTestingTwilio}
-                className="w-full py-3 bg-blue-50 text-blue-700 hover:bg-blue-100 disabled:bg-slate-150 disabled:text-slate-400 font-bold text-xs rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer"
-              >
-                {isTestingTwilio ? (
-                  <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    <span>Disparando SMS e Chamada Telefônica...</span>
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-4 h-4" />
-                    <span>Enviar Teste Completo (SMS + Chamada)</span>
-                  </>
-                )}
-              </button>
-
-              {/* Status Feedback */}
-              {twilioTestResult && (
-                <div className={`p-4 rounded-2xl border text-xs leading-relaxed space-y-2 ${
-                  twilioTestResult.success 
-                    ? 'bg-emerald-50 text-emerald-850 border-emerald-100' 
-                    : 'bg-red-50 text-red-850 border-red-100'
-                }`}>
-                  <div className="flex items-center gap-2 font-bold">
-                    {twilioTestResult.success ? <CheckCircle className="w-4.5 h-4.5 text-emerald-600" /> : <XCircle className="w-4.5 h-4.5 text-red-600" />}
-                    <span>{twilioTestResult.success ? 'Twilio OK!' : 'Erro no Twilio'}</span>
-                  </div>
-                  <p className="text-[11px]">{twilioTestResult.message}</p>
-                </div>
-              )}
-            </div>
-          </div>
         </div>
       ) : (
         <div className="space-y-6">
@@ -526,60 +469,6 @@ export default function TwilioScreen() {
                 </>
               )}
             </button>
-          </div>
-
-          {/* Test Section Email */}
-          <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm space-y-4">
-            <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2">
-              <Send className="w-4 h-4 text-slate-500" />
-              Testar Envio de E-mail Automático
-            </h3>
-
-            <div className="space-y-3">
-              <div className="space-y-1.5">
-                <label className="text-[11px] font-bold text-slate-500 block">E-MAIL DO DESTINATÁRIO</label>
-                <input
-                  type="email"
-                  placeholder="Ex: destinatario@email.com"
-                  value={testEmail}
-                  onChange={(e) => setTestEmail(e.target.value)}
-                  className="w-full text-xs font-mono py-3 px-4 bg-slate-50 border border-slate-150 rounded-xl focus:bg-white focus:outline-none focus:border-blue-500 transition-colors"
-                />
-              </div>
-
-              <button
-                onClick={handleTestEmail}
-                disabled={isTestingEmail}
-                className="w-full py-3 bg-amber-50 text-amber-700 hover:bg-amber-100 disabled:bg-slate-150 disabled:text-slate-400 font-bold text-xs rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer"
-              >
-                {isTestingEmail ? (
-                  <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    <span>Disparando E-mail de Teste...</span>
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-4 h-4" />
-                    <span>Disparar E-mail de Teste</span>
-                  </>
-                )}
-              </button>
-
-              {/* Status Feedback Email */}
-              {emailTestResult && (
-                <div className={`p-4 rounded-2xl border text-xs leading-relaxed space-y-2 ${
-                  emailTestResult.success 
-                    ? 'bg-emerald-50 text-emerald-850 border-emerald-100' 
-                    : 'bg-red-50 text-red-850 border-red-100'
-                }`}>
-                  <div className="flex items-center gap-2 font-bold">
-                    {emailTestResult.success ? <CheckCircle className="w-4.5 h-4.5 text-emerald-600" /> : <XCircle className="w-4.5 h-4.5 text-red-600" />}
-                    <span>{emailTestResult.success ? 'SMTP E-mail OK!' : 'Erro no Envio do E-mail'}</span>
-                  </div>
-                  <p className="text-[11px]">{emailTestResult.message}</p>
-                </div>
-              )}
-            </div>
           </div>
         </div>
       )}
